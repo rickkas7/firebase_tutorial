@@ -3,6 +3,8 @@
 
 [Google Firebase] (https://firebase.google.com/) provides a number of features including analytics, but this tutorial will be using it to store data using its NoSQL realtime database feature. It is a great way to store data generated from your Particle Photon or Electron. You can start using it for free, and for small amounts of data, you may be able to use it for free forever!
 
+Updates to this document are here: [https://github.com/rickkas7/firebase_tutorial] (https://github.com/rickkas7/firebase_tutorial).
+
 ## Getting started
 
 To get started, go to [https://firebase.google.com/] (https://firebase.google.com/) and click the **Get Started For Free** button. If you're not already logged into Google you might need to do that as well.
@@ -200,7 +202,7 @@ Here's my webhook for per-device tables:
 		"a": "{{a}}",
 		"b": "{{b}}",
 		"c": "{{c}}",
-		"d": "{{PARTICLE_PUBLISHED_AT}}"
+		"ts": "{{PARTICLE_PUBLISHED_AT}}"
     },
     "mydevices": true,
     "noDefaults": true
