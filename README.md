@@ -22,7 +22,9 @@ When you open the project, you'll mostly be interested in the Database view for 
 
 ## Authenticating using an app secret
 
-In this tutorial, we'll be authenticating using a database app secret. This means that all of the devices in your account share the same database access. This is generally quite reasonable for your own developer devices.
+In this tutorial, we'll be authenticating using a database app secret. This means that all of the devices in your account share the same database access. This is generally quite reasonable for your own developer devices. 
+
+App secrets are currently listed as deprecated but still work. An alternative is to use the [Google Cloud Integration](https://github.com/rickkas7/google_cloud_tutorial) which uses a more secure method of authentication. That tutorial has been updated with additional information for using it with Firebase.
 
 For product webhooks, authentication of each user separately becomes a lot more complicated, so that will wait for another tutorial. 
 
