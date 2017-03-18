@@ -5,6 +5,8 @@
 
 Updates to this document are here: [https://github.com/rickkas7/firebase_tutorial] (https://github.com/rickkas7/firebase_tutorial).
 
+**Updated March 18, 2017**: Added the *Using the Webhook body feature* section to describe how to store true numbers to be stored in Firebase. 
+
 ## Getting started
 
 To get started, go to [https://firebase.google.com/] (https://firebase.google.com/) and click the **Get Started For Free** button. If you're not already logged into Google you might need to do that as well.
@@ -28,6 +30,7 @@ App secrets are currently listed as deprecated but still work. An alternative is
 
 For product webhooks, authentication of each user separately becomes a lot more complicated, so that will wait for another tutorial. 
 
+When you create an app secret, Google says it is deprecated, but switching to the other method of authentication is quite a bit more complicated, and for now you can continue to use the app secret method.
 
 ![Project settings menu](images/projectsettings.png)
 
@@ -97,6 +100,8 @@ The event named "test1data" is the trigger. The "hook-sent" event indicates that
 ![test1 database view](images/test1database.png)
 
 If you switch over to the Firebase database view, expand "test1data" and "data" and click on the unique database row identifier, you'll see the data that you wrote!
+
+One problem with this webhook is that it stores all of the data as strings, not as true numbers. The section *Using the Webhook body feature* below explains how to get around this limitation.
 
 ### Photon or Electron code
 
@@ -654,7 +659,33 @@ And this is what the Particle console would look like:
 
 ![test3 console view](images/test3console.png)
 
+## Using the Webhook body feature
 
+One of the problems with the first example above is that every field in the database is a string. Sometimes you want the fields to be actual numbers, which makes processing them and doing calculations much easier. This isn't possible using the json feature of webhooks, but it is possible using body.
 
+Here's a webhook using body:
+
+```
+{
+    "event": "test1data",
+    "url": "https://test1-c0b7e.firebaseio.com/test1data/data.json",
+    "requestType": "POST",
+    "headers": {
+    	"Content-Type":"application/json"
+    },
+    "query": {
+    	"auth":"vuZ30Pobxoq8BwfYuzrQJjxqMq7F2HRPUBt0FOyY"
+    },
+    "body":"{\"a\":{{a}}, \"b\":{{b}}, \"c\":{{c}}, \"ts\":\"{{PARTICLE_PUBLISHED_AT}}\" }", 
+    "mydevices": true,
+    "noDefaults": true
+}
+```
+
+And the data that shows up in the Firebase console. Note that the numbers are not surrounded by double quotes here:
+
+![True Numbers](images/truenumbers.png)
+
+The body feature is complicated enough that you should read the section on it in the [webhooks intermediate tutorial](https://github.com/rickkas7/particle-webhooks).
 
 
