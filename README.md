@@ -1,15 +1,15 @@
 # Google Firebase Tutorial
 *Tutorial for using Google Firebase realtime database from the Particle Photon or Electron using webhooks*
 
-[Google Firebase] (https://firebase.google.com/) provides a number of features including analytics, but this tutorial will be using it to store data using its NoSQL realtime database feature. It is a great way to store data generated from your Particle Photon or Electron. You can start using it for free, and for small amounts of data, you may be able to use it for free forever!
+[Google Firebase](https://firebase.google.com/) provides a number of features including analytics, but this tutorial will be using it to store data using its NoSQL realtime database feature. It is a great way to store data generated from your Particle Photon or Electron. You can start using it for free, and for small amounts of data, you may be able to use it for free forever!
 
-Updates to this document are here: [https://github.com/rickkas7/firebase_tutorial] (https://github.com/rickkas7/firebase_tutorial).
+Updates to this document are here: [https://github.com/rickkas7/firebase_tutorial](https://github.com/rickkas7/firebase_tutorial).
 
 **Updated March 18, 2017**: Added the *Using the Webhook body feature* section to describe how to store true numbers to be stored in Firebase. 
 
 ## Getting started
 
-To get started, go to [https://firebase.google.com/] (https://firebase.google.com/) and click the **Get Started For Free** button. If you're not already logged into Google you might need to do that as well.
+To get started, go to [https://firebase.google.com/](https://firebase.google.com/) and click the **Get Started For Free** button. If you're not already logged into Google you might need to do that as well.
 
 ![Main screen](images/getstarted.png)
 
@@ -38,7 +38,7 @@ Select the gear icon (settings) in the upper left corner of the main window. It 
 
 ![Database secrets view](images/databasekeys.png)
 
-Then click **Database**, your database name (should already be selected) and then click **Add Secret**.
+Then click **Service Accounts** (2), then Legacy credentials **Database Secrets** (3), and finally **Add Secret** (4).
 
 If you click on one of the obscured items, it will show the key and provide a way to copy it to the clipboard. You'll need this when you create your webhook.
 
@@ -77,7 +77,7 @@ Note that you must update the "url" field as your hostname will be different, an
 
 ```
 
-You can then create the webhook using the [Particle CLI] (https://particle.io/cli) and a command like:
+You can then create the webhook using the [Particle CLI](https://particle.io/cli) and a command like:
 
 ```
 particle webhook create hook.json
@@ -91,7 +91,7 @@ It's also possible to test the webhook from the command line:
 particle publish test1data "{\"a\":1,\"b\":12.34,\"c\":123}"
 ```
 
-Before running that command, it's a good idea to open up [https://console.particle.io] (https://console.particle.io) and then the logs tab. Running the publish command above should generate something like:
+Before running that command, it's a good idea to open up [https://console.particle.io](https://console.particle.io) and then the logs tab. Running the publish command above should generate something like:
 
 ![test1 console](images/test1console.png)
 
@@ -164,7 +164,7 @@ The snprintf function is a little hard to read because C requires the double quo
 {"a":5,"b":0.996,"c":812669700}
 ```
 
-If you need a refresher on JSON, the data interchange format used extensively in Firebase and in webhooks, [this tutorial] (http://www.w3schools.com/json/) is pretty good.
+If you need a refresher on JSON, the data interchange format used extensively in Firebase and in webhooks, [this tutorial](http://www.w3schools.com/json/) is pretty good.
 
 
 ### How the pieces connect together
@@ -179,7 +179,7 @@ The next part of the url maps into your database hierarchy. The URL always ends 
 
 Not circled in the diagram, but the requestType is set to POST. This means that every time the webhook is run, a new row is created in the table. There are examples of using PUT and GET below. Since a new row is created each time, you see the unique keys like "-KTJgVizgK03-Me9uaqb".
 
-Finally, the json section of the webhook defines what individual fields to include. This uses mustache templates, which are described in a separate [webhooks tutorial] (https://github.com/rickkas7/particle-webhooks).
+Finally, the json section of the webhook defines what individual fields to include. This uses mustache templates, which are described in a separate [webhooks tutorial](https://github.com/rickkas7/particle-webhooks).
 
 
 
@@ -187,7 +187,7 @@ Finally, the json section of the webhook defines what individual fields to inclu
 
 You should read the documentation about structuring your data efficiently in Firebase:
 
-[https://firebase.google.com/docs/database/rest/structure-data] (https://firebase.google.com/docs/database/rest/structure-data)
+[https://firebase.google.com/docs/database/rest/structure-data](https://firebase.google.com/docs/database/rest/structure-data)
 
 Unlike a SQL database, there's no schema that strictly ties you to a specific format, but there are some things you should be careful of to make sure your data can be efficiently accessed.
 
@@ -642,7 +642,7 @@ void getDataHandler(const char *topic, const char *data) {
 }
 ```
 
-Since the data returned by Firebase is in JSON format I used the [SparkJson library] (https://github.com/menan/SparkJson) which is in the community libraries in Particle Build (Web IDE) as SparkJson.
+Since the data returned by Firebase is in JSON format I used the [SparkJson library](https://github.com/menan/SparkJson) which is in the community libraries in Particle Build (Web IDE) as SparkJson.
 
 You could manually parse the result, or use Mustache response templates to extract only the data you want, but in this case I chose to use the library.
 
