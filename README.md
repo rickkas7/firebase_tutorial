@@ -158,7 +158,7 @@ void publishData() {
 
 The program generates a "test1data" event, which will trigger the webhook. It just generates some dummy data, two integers and a float, but that's enough to see what it's doing.
 
-The snprintf function is a little hard to read because C requires the double quote character to be escaped, but it really just generates a string that looks like this, a JSON object string:
+The snprintf function is a little hard to read because [C](https://www.scaler.com/topics/c/) requires the double quote character to be escaped, but it really just generates a string that looks like this, a JSON object string:
 
 ```
 {"a":5,"b":0.996,"c":812669700}
